@@ -1,5 +1,6 @@
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.FontMetrics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -32,7 +33,12 @@ public class GeradorDeFigurinhas {
 
         // escrever uma frase na nova imagem
 
-        graphics.drawString("Figurinha", 100, novaAltura - 100);
+        var texto = "Figurinha";
+        FontMetrics fontMetrics = graphics.getFontMetrics();
+        var textoArea = fontMetrics.getStringBounds(texto, graphics);
+        var posicaoTextoX = (largura - (int) textoArea.getWidth()) / 2;
+
+        graphics.drawString(texto, posicaoTextoX, novaAltura - 100);
 
         // escrever a nova imagem em um arquivo
 
