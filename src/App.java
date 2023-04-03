@@ -7,17 +7,18 @@ public class App {
     public static void main(String[] args) throws Exception {
         var http = new ClienteHttp();
 
-        String url = "https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/TopMovies.json";
-        String jsonConteudos = http.buscarDados(url);
-        ExtratorDeConteudo extratorImdb = new ExtratorDeConteudoImdb();
-        List<Conteudo> conteudos = extratorImdb.extrairConteudos(jsonConteudos);
-
-        // String url = "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY";
-
+        // String url =
+        // "https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/TopMovies.json";
         // String jsonConteudos = http.buscarDados(url);
+        // ExtratorDeConteudo extratorImdb = new ExtratorDeConteudoImdb();
+        // List<Conteudo> conteudos = extratorImdb.extrairConteudos(jsonConteudos);
 
-        // ExtratorDeConteudo extratorNasa = new ExtratorDeConteudoNasa();
-        // List<Conteudo> conteudos = extratorNasa.extrairConteudos(jsonConteudos);
+        String url = "https://api.nasa.gov/planetary/apod?start_date=2023-01-01&end_date=2023-01-10&api_key=Z9JfeOlSIbD1clZcXFtbROdW6y60YAgDVuILPXNK";
+
+        String jsonConteudos = http.buscarDados(url);
+
+        ExtratorDeConteudo extratorNasa = new ExtratorDeConteudoNasa();
+        List<Conteudo> conteudos = extratorNasa.extrairConteudos(jsonConteudos);
 
         var diretorio = new File("figurinhas/");
         diretorio.mkdir();
